@@ -1,22 +1,26 @@
 import React, { useState, useRef, useEffect } from "react";
 
 const Inbox = (props) => {
+ 
   const [newTask, setTask] = useState(false);
-  const [ele, setEle] = useState(null);
-  const [added, setAdded] = useState(4);
-  const [text] = useRef(null);
-  const newdate = useRef(null);
+ 
+  const [ele, setele] = useState(null);
+  const [added, setadded] =useState(4);
+  const text = useRef(null);
+  const ddate = useRef(null);
   function updateText(e){
     e.preventDefault();
-    setEle({number: added, title: text.current.value, 
-      date: (new Date(newdate.current.value)).toLocaleDateString("en-US")})
-  }
-  useEffect(() => {
-    if(ele){
-      props.append(ele);
+    setele({number: added, title: text.current.value, date: (new Date(ddate.current.value)).toLocaleDateString("en-US")})
+}
+
+useEffect(()=>{
+    if (ele) {
+        props.append(ele);
     }
-  },[ele])
+},[ele])
+  
   return (
+    
     <div>
       <h3>Inbox</h3>
       {!newTask && (
@@ -36,7 +40,7 @@ const Inbox = (props) => {
             </button>
             <input
               type="date"
-              ref={newdate}
+              ref={ddate}
               defaultValue="2022-09-27"
               id="date"
             ></input>
